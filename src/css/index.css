@@ -1,0 +1,498 @@
+@font-face{font-family:numFont;src:url(../statics/font/numfont.ttf)}
+.title {
+    width: 100%;
+    height: 10vh;
+    background-color: #102a43;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title .header-time, .title .header-weather {
+    font-size: .75vw;
+    color: #99e2ff;
+    font-weight: 700;
+}
+.title span {
+    flex: 1;
+    padding: 0 1vw;
+    color: #fff;
+}
+.header-title {
+    font-size: 1.95vw;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    background: url('../statics/images/5bbc3113de63dafcf5d2997a17f0b99a.png') no-repeat;
+    display: block;
+    height: 100%;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content, .left {
+    display: flex;
+}
+.title .header-weather {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left {
+    width: 60vw;
+    height: 90vh;
+    background-color: #0e192d;
+}
+
+.camera-container {
+    width: 23.3333334vw;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.camera-container .flex-wrap {
+    width: 100%;
+    height: 30vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.camera-container .camera-view {
+    flex: 1;
+    height: 30vh;
+    background: url("../statics/images/f777f9c246b54de12bdd7c3d616dcdac.png") no-repeat;
+    background-size: 100% 100%;
+    float: left;
+    position: relative;
+}
+.camera-container .c-corner {
+    font-family: numFont;
+    position: absolute;
+    top: .9vh;
+    left: 1.3vw;
+    color: #ffca78;
+    font-size: .9375vw;
+    width: 1.2vw;
+    text-align: center;
+}
+
+.camera-container .c-detail {
+    width: 7.2vw;
+    height: 2.4vh;
+    position: absolute;
+    top: 1.5vh;
+    left: 3vw;
+    color: #99e2ff;
+    font-size: .6vw;
+    overflow: hidden;
+}
+
+.camera-container .c-switch {
+    width: 1vw;
+    height: 2.352vh;
+    position: absolute;
+    top: 1.2vh;
+    right: .1vw;
+    background: url('../statics/images/bbbb.png') no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.camera-container .c-content {
+    width: 11.35vw;
+    background: rgba(111,146,162,.7);
+    height: 25.2vh;
+    position: absolute;
+    top: 4.5vh;
+    left: .2vw;
+    color: currentColor;
+    overflow: hidden;
+}
+
+.left .map {
+    background-color: #fff;
+    height: 100%;
+    width: 36.66vw;
+}
+
+.map {
+    position: relative;
+}
+
+.map .map-title {
+    height: 15.625vh;
+    width: 36.725vw;
+    position: absolute;
+    background: url("../statics/images/16bb0b37ac382d293d73b4199d9f65b3.png") no-repeat;
+    background-size: 100% 100%;
+    z-index: 22;
+    color: #fff;
+    display: flex;
+}
+
+.map .map-title>div {
+    display: block;
+    float: left;
+    flex: 1;
+}
+
+.map .map-title .year {
+    margin-bottom: 3.6vh;
+    position: relative;
+}
+
+.map .map-title .total {
+    width: 12vw;
+    position: relative;
+    padding-right: 1.5vw;
+}
+
+.map .map-title .month {
+    width: 12vw;
+    position: relative;
+    margin-bottom: 3.6vh;
+}
+
+.map .map-title .flow-num, .map .map-title .flow-side {
+    position: absolute;
+    top: 1.7vh;
+    font-size: .625vw;
+    color: #99e2ff;
+}
+
+.map .map-title .flow-side {
+    left: 3.9vw;
+}
+
+.map .map-title .sides-num {
+   
+    position: absolute;
+    top: 5vh;
+    left: 2vw;
+    width: 7.9vw;
+    text-align: center;
+    font-size: 1.66vw;
+}
+
+.map .map-title .flow-num {
+    left: 4.7vw;
+}
+.map .map-title .num-unit {
+    font-size: .625vw;
+    color: #fff;
+}
+
+#map {
+    height: 70.5%;
+    position: absolute;
+    width: 100%;
+    top: 13%;
+}
+
+.map .map-icon {
+    height: 14.815vh;
+    width: 36.625vw;
+    position: absolute;
+    bottom: 0;
+    background: url("../statics/images/e8bb47a47e329c95aeeb7a59675070be.png") no-repeat;
+    background-size: 100% 100%;
+    z-index: 22;
+    color: #fff;
+    display: flex;
+}
+
+.map .map-icon>div {
+    flex: 1;
+    display: flex;
+    height: 12.815vh;
+    position: relative;
+    cursor: pointer;
+    margin: 0 2vw;
+}
+
+.map .map-icon .btn>div {
+    width: 2.9vw;
+    height: 12vh;
+    background-size: contain;
+}
+.map .map-icon .sightSeeingBus {
+    background: url(../statics/images/dfd2d834c0ea239e5844dfdfa448aad6.png) no-repeat 50%;
+}
+
+.map .map-icon .btn.sel .sightSeeingBus {
+    background: url(../statics/images/fe1f408dd33f93bb5db568bf43e36f80.png) no-repeat 50%;
+    background-size: contain;
+}
+
+.map .map-icon .btn.sel>div {
+    width: 3.3vw;
+    height: 12.1vh;
+}
+
+.map .map-icon span {
+    position: absolute;
+    top: 10.9vh;
+    left: -.4vw;
+    display: block;
+    width: 3.6vw;
+    height: 2.3vh;
+    color: #99e2ff;
+    font-size: .625vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+.map .map-icon .sightSeeingShip {
+    background: url(../statics/images/be4397240ce388e0e69d8681c19ce2b0.png) no-repeat 50%;
+}
+
+.map .map-icon .btn.sel .sightSeeingShip {
+    background: url(../statics/images/464dee4a0fcbf3c12307923177d31f7e.png) no-repeat 50%;
+    background-size: contain;
+}
+.map .map-icon .btn.sel>div {
+    width: 3.3vw;
+    height: 12.1vh;
+}
+
+.map .map-icon .btn>div {
+    width: 2.9vw;
+    height: 12vh;
+    background-size: contain;
+}
+.map .map-icon .workers {
+    background: url(../statics/images/79e15ab6f6e7f3369b32a620b39077e1.png) no-repeat 50%;
+}
+
+.map .map-icon .btn.sel .workers {
+    background: url(../statics/images/a7e6d9c146190b0b8a5b3f06ac258bab.png) no-repeat 50%;
+    background-size: contain;
+}
+.map .map-icon .btn.sel>div {
+    width: 3.3vw;
+    height: 12.1vh;
+}
+
+.map .map-icon .camera {
+    background: url(../statics/images/fed33525f3d16c9a101d1de2f7702e37.png) no-repeat 50%;
+}
+
+.map .map-icon .btn.sel .camera {
+    background: url(../statics/images/d8a79cc332d057738488969a078c59bc.png) no-repeat 50%;
+    background-size: contain;
+}
+.map .map-icon .btn.sel>div {
+    width: 3.3vw;
+    height: 12.1vh;
+}
+
+.map .map-icon .wifi {
+    background: url(../statics/images/b5811891558dc6d7364215688a1de6f8.png) no-repeat 50%;
+}
+
+.map .map-icon .btn.sel .wifi {
+    background: url(../statics/images/0ca8a50e8d77ff6bed2b6b3335fdc69f.png) no-repeat 50%;
+    background-size: contain;
+}
+.map .map-icon .btn.sel>div {
+    width: 3.3vw;
+    height: 12.1vh;
+}
+
+
+
+.right {
+    background-color: #0e192d;
+    width: 40vw;
+    height: 90vh;
+    overflow: hidden;
+}
+
+.right .num-view {
+    width: 20vw;
+    height: 28.3vh;
+    background: url(../statics/images/623fa3f5a82f2ffb2b61899d1e0d0b39.png) no-repeat 0 0/100% 100%;
+    /* background-size: contain; */
+    color: #fff;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding-left: 1.9vw;
+    box-sizing: border-box;
+    float: left;
+    overflow: hidden;
+}
+.click-zone {
+    width: 1vw;
+    height: 1vw;
+    position: absolute;
+    top: .522vw;
+    left: .438vw;
+    cursor: pointer;
+    background: linear-gradient(-48.7deg,#fbb03b 40%,transparent 46%,transparent);
+}
+
+.num-view .b-title {
+    width: .5vw;
+    height: 20vh;
+    position: absolute;
+    top: 5.3vh;
+    left: .8vw;
+    color: #99e2ff;
+    font-weight: 700;
+    font-size: .5vw;
+    line-height: .55vw;
+}
+/* ------------------------------- */
+
+.num-view .long-block {
+    display: inline-block;
+    width: .2084vw;
+    height: .2084vw;
+    background-color: #fbb03b;
+}
+.ml3 {
+    margin-left: .5vw!important;
+}
+
+.num-view .long-block {
+    display: inline-block;
+    width: .2084vw;
+    height: .2084vw;
+    background-color: #fbb03b;
+}
+
+.mr3 {
+    margin-right: .5vw!important;
+}
+
+.num-view .num-view-title {
+    background-color: #162b40;
+    height: .7vh;
+    position: absolute;
+    top: -.45vh;
+    left: .9vw;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: .4375vw;
+}
+.num-view .two-block {
+    flex: 1;
+    width: 16.7vw;
+    border: .03125vw solid #fbb03b;
+    margin: 2.3vh .3vw 2vh .4vw;
+    position: relative;
+}
+
+.num-view .num-view-detail {
+    width: 100%;
+    height: 100%;
+}
+
+.num-view .three-block {
+    border: .03125vw solid #fbb03b;
+    display: flex;
+    height: 8.1vh;
+    margin: .5vh .6vw .8vh .4vw;
+    align-items: center;
+    flex-direction: column;
+    font-weight: 700;
+}
+
+.fixmt13 {
+    margin-top: 1.3vh!important;
+}
+
+.num-view .three-block .top {
+    display: block;
+    flex: 1;
+    font-size: .5625vw;
+    margin-top: .8vh;
+}
+
+.num-view .three-block .bottom, .num-view .three-block .no-more-bottom {
+    display: block;
+    flex: 1;
+    font-size: .39583333vw;
+    width: 50%;
+    background-color: #00a1f1;
+    margin-bottom: .9vh;
+    margin-top: 1vh;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.num-view .three-block .bottom {
+    line-height: 2.5vh;
+    cursor: pointer;
+}
+
+.num-view .three-block .top .warn-level1 {
+    color: #00a1f1;
+}
+
+.num-view .one-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.mt3 {
+    margin-top: 2.2vh!important;
+}
+
+.num-view .one-block {
+    flex: 1;
+    width: 8.5vw;
+    height: 11.4vh;
+    border: .03125vw solid #fbb03b;
+    margin: 0 .9vw 1.5vh .4vw;
+    position: relative;
+}
+#province-rank {
+    font-size: .375vw;
+    margin: 4% 2%;
+    width: 96%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.num-view .three-block .no-more-bottom {
+    color: #a0a0a0;
+    background-color: #444546;
+    line-height: .9vw;
+}
+.num-view .rectangle-wrap {
+    flex: 1;
+    display: flex;
+    margin-right: .5vw;
+    padding: 1.3vh 1.5vh;
+}
+
+.num-view .rectangle {
+    flex: 1;
+    border: 1px solid #fbb03b;
+    margin: .3vh .3vw 0;
+    font-size: .4375vw;
+}
+.num-view .rectangle .no-more-things {
+    margin: 2.3vh .6vw 1.3vh;
+    font-size: .4374vw;
+    color: #a7abb1;
+    font-weight: 700;
+}
+.num-view .rectangle span {
+    display: block;
+}
+.num-view .rectangle .no-more-detail {
+    margin: .4vh .4vw 1.3vh .6vw;
+    font-size: .4374vw;
+    color: #a0a0a0;
+}

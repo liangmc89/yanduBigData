@@ -1,0 +1,47 @@
+.padding-lr-1rem{
+    padding:0 1.5rem;  
+
+}
+.padding-little{
+    padding: .5rem 1.5rem;
+}
+.padding-lr-3rem{
+  padding: 1rem 3rem;
+}
+.padding-1rem{
+    padding: 1rem 1.5rem;
+}
+ section:first-child{
+    margin-top: 0;
+}
+section{
+    border-bottom: 1px solid #d2dae1;   
+    margin-top: 1rem;
+}
+.no-border-bttom{
+  border-bottom:none;
+}
+.q-toolbar-title{
+    font-weight: 800;
+    color: black;
+    font-size: 1.3rem;
+}
+.sec-title{
+    border-left: .5rem solid #1c87f1;
+    padding: 0 .5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #787f85;
+}
+.sec-content{
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+}
+.sec-chart{
+   height: 240px;
+   width: auto;
+
+}
+
+
+

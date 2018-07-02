@@ -1,0 +1,32 @@
+{
+  "name": "yandu",
+  "version": "1.0.0",
+  "description": "A Quasar Framework app",
+  "productName": "yandu",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "liangmc89 <273187189@qq.com>",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "echarts": "^4.1.0",
+    "vue-baidu-map": "^0.21.10",
+    "vue-echarts-v3": "^1.0.19",
+    "vue-video-player": "^5.0.2"
+  },
+  "devDependencies": {
+    "quasar-cli": "^0.16.0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}
