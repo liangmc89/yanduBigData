@@ -131,7 +131,7 @@
            <bml-heatmap  :data="heatdata" :max="200" :radius="30" v-if="markerType=='wifi'">
   </bml-heatmap>
    
-          <bm-marker autoPan :key=index @click="markerClick(marker)" v-for="(marker,index) in markers" :title="marker.name" v-if="marker.type==markerType" :position="marker.position" :icon="currentMarker==marker.name?{url:'../statics/images/icon-pinA.png',size: {width: 30, height: 35}}:marker.icon"  >
+          <bm-marker autoPan :key=index @click="markerClick(marker)" v-for="(marker,index) in markers" :title="marker.name" v-if="marker.type==markerType" :position="marker.position" :icon="currentMarker==marker.name?{url:'statics/images/icon-pinA.png',size: {width: 30, height: 35}}:marker.icon"  >
          
            <!-- <bm-label :content="marker.name" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 20}"/> -->
         </bm-marker>
@@ -163,7 +163,7 @@
     </div>
     <div class="right">
       
-    <q-tabs>
+    <q-tabs align='center'>
   <!-- 选项卡 - 注意slot="title" -->
   <q-tab default  slot="title" name="tab-1"  label='实时数据'/>
   <q-tab  slot="title" name="tab-2" label='应急预案与值班' />
@@ -198,38 +198,44 @@
             </span>
           </div>
            
-        </div>      
-        <div class="num-view" >
+        </div> 
+          <div class="num-view dpn" id="emergency">
           <div class="click-zone"></div>
-          <div class="b-title">停车场数据监测</div>
-          <div class="two-block">
-            <div class="num-view-detail" id="parking">
-              <div class="echarts">
-                <IEcharts
-                  :option="bar"      
-                  @ready="onReady"
-                  @click="onClick"
-                />    
+          <div class="b-title">突发事件预警及响应方案</div>
+          <div class="emergency-wrap">
+            <div class="three-block fixmt13">
+              <span class="top">
+                <span class="three-top-left">停车场实时预警监控</span>
+                <span class="right-left">等级：</span>
+                <span id="peopleFlow" class="warn-level1">
+                  一级 畅通
+                </span>
+              </span>
+                <span class="bottom plan" data-level="1" data-type="park" @click="showWindow(parkText)">
+                点击查看停车场预警应急预案
+              </span>
+              </div><div class="three-block fixmt13">
+              <span class="top">
+                <span class="three-top-left">人流实时预警监控</span>
+                <span class="right-left">等级：</span>
+                <span id="peopleFlow" class="warn-level1">
+                  一级 舒适
+                </span>
+              </span>
+                <span class="bottom plan" data-level="1" data-type="visitor" @click="showWindow(peppleText)">
+                点击查看人流预警应急预案
+              </span>
               </div>
-            </div>
-            <span class="num-view-title">
-                
-              <span class="long-block mr3"></span>
-              <span class="t-detail">实时车位变化情况</span>
-              <span class="long-block ml3"></span>
-            </span>
+              <div class="three-block">
+              <span class="top">
+                <span class="more">更多监控项等待接入中...</span>
+              </span>
+                <span class="no-more-bottom" id="noMore">暂无预警应急预案</span>
+              </div>
+            
           </div>
-          <div class="two-block fixmt">
-            <div class="num-view-detail" id="car">
-              <IEcharts :option='Parkinglot'/>
-            </div>
-            <span class="num-view-title">
-              <span class="long-block mr3"></span>
-              <span class="t-detail">近日车流变化</span>
-              <span class="long-block ml3"></span>
-            </span>
-          </div>
-        </div>
+        </div>     
+        
         
        
       </div>
@@ -378,45 +384,41 @@
   </q-tab-pane>
   <q-tab-pane name="tab-2">
     <div class="two-part-wrap">
-        <div class="num-view dpn" id="emergency">
+       <div class="num-view" >
           <div class="click-zone"></div>
-          <div class="b-title">突发事件预警及响应方案</div>
-          <div class="emergency-wrap">
-            <div class="three-block fixmt13">
-              <span class="top">
-                <span class="three-top-left">停车场实时预警监控</span>
-                <span class="right-left">等级：</span>
-                <span id="peopleFlow" class="warn-level1">
-                  一级 畅通
-                </span>
-              </span>
-                <span class="bottom plan" data-level="1" data-type="park" @click="showWindow(parkText)">
-                点击查看停车场预警应急预案
-              </span>
-              </div><div class="three-block fixmt13">
-              <span class="top">
-                <span class="three-top-left">人流实时预警监控</span>
-                <span class="right-left">等级：</span>
-                <span id="peopleFlow" class="warn-level1">
-                  一级 舒适
-                </span>
-              </span>
-                <span class="bottom plan" data-level="1" data-type="visitor" @click="showWindow(peppleText)">
-                点击查看人流预警应急预案
-              </span>
+          <div class="b-title">停车场数据监测</div>
+          <div class="two-block">
+            <div class="num-view-detail" id="parking">
+              <div class="echarts">
+                <IEcharts
+                  :option="bar"      
+                  @ready="onReady"
+                  @click="onClick"
+                />    
               </div>
-              <div class="three-block">
-              <span class="top">
-                <span class="more">更多监控项等待接入中...</span>
-              </span>
-                <span class="no-more-bottom" id="noMore">暂无预警应急预案</span>
-              </div>
-            
+            </div>
+            <span class="num-view-title">
+                
+              <span class="long-block mr3"></span>
+              <span class="t-detail">实时车位变化情况</span>
+              <span class="long-block ml3"></span>
+            </span>
+          </div>
+          <div class="two-block fixmt">
+            <div class="num-view-detail" id="car">
+              <IEcharts :option='Parkinglot'/>
+            </div>
+            <span class="num-view-title">
+              <span class="long-block mr3"></span>
+              <span class="t-detail">近日车流变化</span>
+              <span class="long-block ml3"></span>
+            </span>
           </div>
         </div>
+      
         <div class="num-view dpn" id="onDuty">
           <div class="click-zone"></div>
-          <div class="b-title">突发事件预警及响应方案 值班联络</div>
+          <div class="b-title">突发事件预警及响应值班联络</div>
           <div class="two-block" id="scrollDuty" style="overflow: hidden; display: block;">
             <div id="text-wrap" class="animatedSlideUp" style="display: block; width: 96%; margin: 2%; font-size: 5.52563px;">
               <p style="text-align: center; font-size: 5.52563px;">
@@ -430,23 +432,15 @@
             </div>
         </div>
       </div>
-     
-      
-  </q-tab-pane>
- 
-</q-tabs>
 
-      
-     
-      
-     
-      
-      <!-- <div class="two-part-wrap">
+      <div class="two-part-wrap">
         <div class="num-view" id="internet">
           <div class="click-zone"></div>
           <div class="b-title">网络舆情监控</div>
           <div class="two-block">
-            <div class="num-view-detail" id="consensus-trend"></div>
+            <div class="num-view-detail" id="consensus-trend">
+              <IEcharts :option='balabala'/>
+            </div>
             <span class="num-view-title">
               <span class="long-block mr3"></span>
               <span class="t-detail">舆情走势图</span>
@@ -455,7 +449,13 @@
         </div>
         <div class="one-wrap">
           <div class="one-block">
-            <div class="num-view-detail" id="media-liveness"></div>
+            <div class="num-view-detail" id="media-liveness">
+               <p  style="font-size:8px;margin:8px 20px 3px 5px">南京头条</p>
+                <p  style="font-size:20px;margin:3px 15px 8px 20px">腾讯新闻</p>
+                <p style="font-size:10px;margin:5px 0 5px 30px;">微信朋友圈</p>
+                <p style="margin-left:23px">网易新闻 <span style="font-size:6px">南方日报</span></p>
+                
+            </div>
             <span class="num-view-title">
                 <span class="long-block mr3"></span>
                 <span class="t-detail">媒体活跃度</span>
@@ -463,7 +463,13 @@
               </span>
           </div>
           <div class="one-block">
-            <div class="num-view-detail" id="keywords-cloud"></div>
+            <div class="num-view-detail" id="keywords-cloud">
+              <p style="font-size:20px;margin:3px 15px 8px 20px">智慧旅游</p>
+              <p style="font-size:10px;margin:5px 0 6px 30px;">生态旅游</p>
+              <p style="margin:5px 25px 5px 23px">亲子游<span style="font-size:8px;margin:13px 20px 3px 5px;padding-left:10px">原生态</span></p>              
+             <p style="padding-left:20px">国际度假村</p>
+
+            </div>
             <span class="num-view-title">
                 <span class="long-block mr3"></span>
                 <span class="t-detail">关键词云</span>
@@ -472,7 +478,64 @@
           </div>
           </div>
         </div>
-        <div class="num-view dpn" id="netTrack">
+        
+        <div class="num-view" >
+          <div class="click-zone"></div>
+          <div class="b-title">票务数据监测</div>
+          <div class="two-block">
+            <div class="num-view-detail" id="parking">
+              <div class="echarts">
+                <IEcharts
+                  :option="ticnum" />    
+              </div>
+            </div>
+            <span class="num-view-title">
+                
+              <span class="long-block mr3"></span>
+              <span class="t-detail">近日售票数量变化</span>
+              <span class="long-block ml3"></span>
+            </span>
+          </div>
+          <div class="two-block fixmt">
+            <div class="num-view-detail" id="car">
+              <IEcharts :option='bbcc'/>
+            </div>
+            <span class="num-view-title">
+              <span class="long-block mr3"></span>
+              <span class="t-detail">近日售票渠道分析</span>
+              <span class="long-block ml3"></span>
+            </span>
+          </div>
+        </div>
+        <div class="num-view" >
+          <div class="click-zone"></div>
+          <div class="b-title">电商支付监测</div>
+          <div class="two-block">
+            <div class="num-view-detail" id="parking">
+              <div class="echarts">
+                <IEcharts
+                  :option="payWay" />    
+              </div>
+            </div>
+            <span class="num-view-title">
+                
+              <span class="long-block mr3"></span>
+              <span class="t-detail">电商平台支付情况（渠道）</span>
+              <span class="long-block ml3"></span>
+            </span>
+          </div>
+          <div class="two-block fixmt">
+            <div class="num-view-detail" id="car">
+              <IEcharts :option='payType'/>
+            </div>
+            <span class="num-view-title">
+              <span class="long-block mr3"></span>
+              <span class="t-detail">电商平台支付情况（类型）</span>
+              <span class="long-block ml3"></span>
+            </span>
+          </div>
+        </div>
+        <!-- <div class="num-view dpn" id="netTrack">
           <div class="click-zone"></div>
           <div class="b-title">网络舆情监测 处置追踪</div>
             <div class="trace-wrap">
@@ -503,8 +566,102 @@
                 </div>
               </div>
             </div>
+        </div> -->
+      </div>
+       <div class="two-part-wrap">
+        <div class="num-view" id="tour">
+          <div class="b-title">游客画像分析</div>
+          <div class="one-wrap mt3">
+            <div class="one-block">
+              <div class="num-view-detail" id="gender-analysis">
+                <IEcharts :option='abc'/>
+              </div>
+              <span class="num-view-title">
+                <span class="long-block mr3"></span>
+                <span class="t-detail">游客性别分析</span>
+                <span class="long-block ml3"></span>
+              </span>
+            </div>
+            <div class="one-block">
+              <div class="num-view-detail" id="age-analysis">
+                <IEcharts :option='bbb'/>
+              </div>
+              <span class="num-view-title">
+                <span class="long-block mr3"></span>
+                <span class="t-detail">游客年龄分析</span>
+                <span class="long-block ml3"></span>
+              </span>
+            </div>
+          </div>
+          <div class="one-wrap fix-onemt">
+            <div class="one-block ">
+              <div class="num-view-detail" id="source-analysis">
+                <IEcharts ref='chinaMap' :option='chinaMap'/>
+              </div>
+              <span class="num-view-title">
+                <span class="long-block mr3"></span>
+                <span class="t-detail">游客来源地分析</span>
+                <span class="long-block ml3"></span>
+              </span>
+            </div>
+            <div class="one-block ">
+              <div class="num-view-detail" id="province">
+                <div id="province-list" class="table">
+                    <table id="province-rank">
+                      <thead>
+                      <tr>
+                        <th>排名</th>
+                        <th>省份</th>
+                        <th>人数</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                         <tr>
+                        <th>1</th>
+                        <th>江苏</th>
+                        <th>123500</th>
+                      </tr>
+                       <tr>
+                        <th>2</th>
+                        <th>上海</th>
+                        <th>30450</th>
+                      </tr>
+                       <tr>
+                        <th>3</th>
+                        <th>安徽</th>
+                        <th>25431</th>
+                      </tr>
+                       <tr>
+                        <th>4</th>
+                        <th>浙江</th>
+                        <th>23431</th>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              <span class="num-view-title">
+                <span class="long-block mr3"></span>
+                <span class="t-detail">来源地省份排名</span>
+                <span class="long-block ml3"></span>
+              </span>
+            </div>
+          </div>
         </div>
-      </div> -->
+      </div>
+      
+     
+      
+  </q-tab-pane>
+ 
+</q-tabs>
+
+      
+     
+      
+     
+      
+      
       
     </div>
 
@@ -531,17 +688,20 @@
 </template>
 
 <style>
+.no-margin {
+  margin: 0;
+}
 @keyframes myfirst {
   0% {
     top: 100%;
   }
   100% {
-    top: -150%;
+    top: -110%;
   }
 }
 
 .animatedSlideUp {
-  animation: myfirst 20s linear 2s infinite normal;
+  animation: myfirst 16s linear 2s infinite normal;
   position: relative;
 }
 
@@ -611,7 +771,492 @@ export default {
       ttt: "",
       parkText: `<div class="alert-html ps-container ps-theme-default ps-active-y" id="alert-html" data-ps-id="3d5f8821-619e-fa9c-a92d-e466d98891a6" style="font-size: 4.2px;"><div style="font-size: 4.2px;"><br style="font-size: 4.2px;"></div><div style="font-size: 4.2px;"><h3 style="text-align: left; margin-bottom: 0px; font-size: 4.2px;">一、安全应急预案指导方针：</h3><div style="font-size: 4.2px;"><br style="font-size: 4.2px;"></div><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">“以人为本，预防为主，快速反应，联动处置”，把保障游客健康和生命财产安全作为景区首要任务，层层落实责任，形成统一指挥、反应灵敏、协调有序、运转高效的应急管理机制，对各种突发事件做到“早发现、早<span style="line-height: 25.2px; font-size: 4.2px;">报告</span>、早处置”。</p><h3 style="text-align: left; margin-bottom: 0px; font-size: 4.2px;">二、应急处置程序：</h3><p style="margin-bottom: 0px; font-size: 4.2px;">　　</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;">1、发生情况和报告</span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><br style="font-size: 4.2px;"></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">&nbsp; &nbsp; &nbsp; &nbsp;一旦游客在景区内因道路交通事故、火灾、强风、雷击、冰雪灾害或因滑跌、落水、疾病、食物中毒造成人员伤亡，以及遇险、迷途走失等报警求助紧急情况，各工作点（岗位）员工要迅速报告本部门主管（负责人），部门主管（负责人）根据现场情况作紧急处置并迅即报告办公室和应急领导小组当日值班领导。对报告已明确发生了重大安全事故（险情）和人员伤亡的，各级负责人应以最快速度报告集团领导以及相关的公安派出所、交警、旅游质监、安全生产监督、卫生防疫等政府部门。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><br style="font-size: 4.2px;"></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;">2、出发救援</span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;"><br style="font-size: 4.2px;"></span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　安全应急领导小组值班领导接报告后应立即通知安全应急领导小组其他成员，各位成员根据分工做好车辆调度、组织相关人员、准备应急处置装备（工具）、联系有关单位等各项准备工作，集合待命。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　安全应急分队队长以最快速度通知各位队员。所有应急分队队员不论人在何处，无论白天黑夜，必须立即携带通讯、照明等应急装备（工具）赶到指定地点，在应急领导小组值班领导和队长带领下，火速赶赴现场，开展救援处置工作。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><br style="font-size: 4.2px;"></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;">3、现场处置</span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;"><br style="font-size: 4.2px;"></span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　⑴ 情况报告</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　应急分队到达现场后，迅速全面掌握了解情况，随时向安全应急领导小组组长报告事件性质、发生的时间和地点、人员伤亡损失、救援处置进展以及是否需要后继人员和装备支援等情况。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　⑵ 抢救伤员</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　应急队员利用携带的担架、急救箱，尽快将伤员（患者）抬（搀扶）至安全地段，由受过医疗救护专业训练的队员进行基本情况检查并进行精神安抚。根据伤员（患者）情况，或送山下景区游客中心休息康复，对重伤员（患者）直接送下花园区医院诊治。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　⑶ 保护现场</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　设立警戒范围，安排人员在现场警戒、守候（在搜救伤员和紧急排险时，对现场原始状态应作好标记标号），等待有关部门来勘察现场。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　⑷ 疏导游客尽快撤离危险地段。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　⑸ 协助有关部门对事故进行调查。</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><br style="font-size: 4.2px;"></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><span style="font-size: 5.4px;">4、信息汇总</span></p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;">　　应急处置信息中心设在集团办公室</p><p style="margin-bottom: 0px; text-align: left; font-size: 4.2px;"><br style="font-size: 4.2px;"></p></div></div>`,
       peppleText: `<div class="alert-html ps-container ps-theme-default ps-active-y" id="alert-html" data-ps-id="f3350eb2-6d51-c06b-079a-1eff0b39e609" style="font-size: 5.62188px;"><h1 style="margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></h1><h3 style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">一、安全应急预案指导方针：</h3><div style="font-size: 5.62188px;"><br style="font-size: 5.62188px;"></div><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">“以人为本，预防为主，快速反应，联动处置”，把保障游客健康和生命财产安全作为景区首要任务，层层落实责任，形成统一指挥、反应灵敏、协调有序、运转高效的应急管理机制，对各种突发事件做到“早发现、早<span style="line-height: 25.2px; font-size: 5.62188px;">报告</span>、早处置”。</p><h3 style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">二、应急处置程序：</h3><p style="margin-bottom: 0px; font-size: 5.62188px;">　　</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;">1、发生情况和报告</span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">&nbsp; &nbsp; &nbsp; &nbsp;一旦游客在景区内因道路交通事故、火灾、强风、雷击、冰雪灾害或因滑跌、落水、疾病、食物中毒造成人员伤亡，以及遇险、迷途走失等报警求助紧急情况，各工作点（岗位）员工要迅速报告本部门主管（负责人），部门主管（负责人）根据现场情况作紧急处置并迅即报告办公室和应急领导小组当日值班领导。对报告已明确发生了重大安全事故（险情）和人员伤亡的，各级负责人应以最快速度报告集团领导以及相关的公安派出所、交警、旅游质监、安全生产监督、卫生防疫等政府部门。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;">2、出发救援</span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;"><br style="font-size: 5.62188px;"></span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　安全应急领导小组值班领导接报告后应立即通知安全应急领导小组其他成员，各位成员根据分工做好车辆调度、组织相关人员、准备应急处置装备（工具）、联系有关单位等各项准备工作，集合待命。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　安全应急分队队长以最快速度通知各位队员。所有应急分队队员不论人在何处，无论白天黑夜，必须立即携带通讯、照明等应急装备（工具）赶到指定地点，在应急领导小组值班领导和队长带领下，火速赶赴现场，开展救援处置工作。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;">3、现场处置</span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;"><br style="font-size: 5.62188px;"></span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　⑴ 情况报告</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　应急分队到达现场后，迅速全面掌握了解情况，随时向安全应急领导小组组长报告事件性质、发生的时间和地点、人员伤亡损失、救援处置进展以及是否需要后继人员和装备支援等情况。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　⑵ 抢救伤员</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　应急队员利用携带的担架、急救箱，尽快将伤员（患者）抬（搀扶）至安全地段，由受过医疗救护专业训练的队员进行基本情况检查并进行精神安抚。根据伤员（患者）情况，或送山下景区游客中心休息康复，对重伤员（患者）直接送下花园区医院诊治。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　⑶ 保护现场</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　设立警戒范围，安排人员在现场警戒、守候（在搜救伤员和紧急排险时，对现场原始状态应作好标记标号），等待有关部门来勘察现场。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　⑷ 疏导游客尽快撤离危险地段。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　⑸ 协助有关部门对事故进行调查。</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><span style="font-size: 7.22812px;">4、信息汇总</span></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;">　　应急处置信息中心设在集团办公室</p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><p style="text-align: left; margin-bottom: 0px; font-size: 5.62188px;"><br style="font-size: 5.62188px;"></p><div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px; height: 510px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 373px;"></div></div></div>`,
+      bbcc:{
+        color: ["rgb(251,176,58)", "rgb(4,183,255)"],        
+        grid: {
+          
+          top: "5%",
+          bottom: "30%",
+          left: 95,
+         
+          
+        },
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            type: "shadow",
+            label: {
+              show: true,
+              formatter: function(params) {
+                return params.value.replace("\n", "");
+              }
+            }
+          }
+        },
+        xAxis: [
+          {
+            type: "category",            
+            data: [
+              "散客",
+              "合作单位",
+              "垂钓酒店",
+              "合作酒店",             
+            ],
+            axisLine: {
+              show: false
+            },
+            
+            splitLine: {
+              show: false
+            },
+            axisLabel: {
+              show: true,
+              interval:0,
+              color:'#fff',
+              fontSize:8,
+            },
+            axisTick: {
+              show: false
+            }
+          }
+        ],
+        yAxis: [
+          { 
+            max:300,
+            type: "value",           
+            nameTextStyle: {
+              color: "#787f85"
+            },
+             axisLine: {
+              show: false
+            },
+            splitLine: {
+              show: false
+            },
+            axisLabel: {
+              show: false
+            },
+            axisTick: {
+              show: false
+            }
+           
+          }
+        ],
+        series: [
+          {
+            //name: "散客",
+            type: "bar",
+            // barWidth: "5px",
+            data: [68,55,33,66],
+            color:'rgb(4,183,255)',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            }
+
+           
+          },
+          {
+           
+            type: "bar",
+            data: [35, 25, 65,45],            
+            color:'rgb(4,183,255)',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            }
+            
+          },
+          {
+            
+            type: "bar",
+            data: [44, 33, 14,33],            
+            color:'rgb(4,183,255)',
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            }
+            
+          },
+          
+
+          {
+            name: "渠道",
+            type: "pie",
+            center: ["20%", "55%"],
+            radius: ["30%", "40%"],
+            z: 100,
+            labelLine: {
+              length2: 10,
+              smooth: true
+            },
+            data: [
+              { value: 35, name: "线上" },
+              { value: 565, name: "线下" }
+            ]
+          }
+        ]
+      },
+      ticnum: {
+        tooltip:{},
+        grid: {
+          show: true,   
+          left:'15%',      
+          top: "17%",
+          bottom: "25%"        
+        },
+        xAxis: {
+          type: "category",
+          boundaryGap: false,
+          data: ["2018-6-27", "2018-6-28", "2018-6-29", "2018-6-30", "2018-7-1", "2018-7-2", "2018-7-3"],
+          axisLabel: {
+            color: "#fff"
+          }
+        },
+        yAxis: {
+          type: "value",
+          axisLabel: {
+            color: "#fff"
+          }
+        },
+        series: [
+          {
+            data: [20, 932, 325, 234, 1090, 340, 1320],
+            type: "line",
+            label: {
+              show: true,
+              formatter: "{c}",
+              color: "rgb(77,167,214)"
+            },
+            areaStyle: {
+              color: "rgb(77,167,214)"
+            },
+            lineStyle: {
+              color: "rgb(142,224,252)"
+            },
+            itemStyle: {
+              color: "rgb(77,167,214)"
+            }
+          }
+        ]
+      },
+      payType: {
+        color: [
+          "rgb(29,175,250)",
+          "rgb(247,176,72)",
+          "rgb(123,231,93)",
+          "rgb(156,227,253)"
+        ],
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        legend: {
+          top: "5%",
+          textStyle: {
+            color: "#fff"
+          },
+          data: ["APP支付", "微信公众号", "其他"]
+        },
+        grid: {
+          top: "30%",
+          left: "10%",
+          right: "10%",
+          bottom: "30%"
+        },
+        xAxis: [
+          {
+            type: "category",
+            data: [
+              "2018-7",
+              "2018-6",
+              "2018-5",
+              "2018-4",
+              "2018-3",
+              "2018-2",
+              "2018-1"
+            ],
+            axisLabel: {
+              color: "#fff"
+            }
+          }
+        ],
+        yAxis: [
+          {
+            max: 1700,
+            type: "value",
+            axisLabel: { show: false },
+            axisLine: { show: false },
+            axisTick: { show: false }
+          }
+        ],
+        series: [
+          {
+            name: "APP支付",
+            type: "bar",
+            stack: "广告",
+            data: [120, 132, 101, 134, 90, 230, 210]
+          },
+          {
+            name: "微信公众号",
+            type: "bar",
+            stack: "广告",
+            data: [220, 182, 191, 234, 290, 330, 310]
+          },
+          {
+            name: "其他",
+            type: "bar",
+            stack: "广告",
+            data: [150, 232, 201, 154, 190, 330, 410]
+          }
+        ]
+      },
+      payWay: {
+        color: ["rgb(29,175,250)", "rgb(247,176,72)", "rgb(123,231,93)"],
+        tooltip: {
+          trigger: "axis"
+        },
+        legend: {
+          top: "15%",
+          textStyle: {
+            color: "#fff"
+          },
+          data: ["APP支付", "微信公众号", "网站支付"]
+        },
+        grid: {
+          top: "40%",
+          left: "10%",
+          right: "10%",
+          bottom: "3%",
+          containLabel: true
+        },
+        xAxis: {
+          axisLabel: {
+            color: "#fff"
+          },
+          type: "category",
+          boundaryGap: false,
+          data: ["2018-7", "2018-6", "2018-5", "2018-4", "2018-3"]
+        },
+        yAxis: {
+          max: 1000,
+          type: "value",
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: true
+          },
+          axisLine: { show: false },
+          axisTick: { show: false }
+        },
+        series: [
+          {
+            name: "APP支付",
+            type: "line",
+            stack: "总量",
+            data: [120, 132, 101, 94, 90]
+          },
+          {
+            name: "微信公众号",
+            type: "line",
+            stack: "总量",
+            data: [120, 182, 191, 234, 290]
+          },
+          {
+            name: "网站支付",
+            type: "line",
+            stack: "总量",
+            data: [150, 232, 201, 154, 190]
+          }
+        ]
+      },
+
+      balabala: {
+        tooltip: {
+          trigger: "axis",
+          axisPointer: {
+            // 坐标轴指示器，坐标轴触发有效
+            type: "shadow" // 默认为直线，可选为：'line' | 'shadow'
+          }
+        },
+        grid: {
+          top: "5%",
+          left: "3%",
+          right: "4%",
+          bottom: "0%",
+          containLabel: true
+        },
+        xAxis: {
+          type: "value",
+          boundaryGap: [0, 0.01],
+          max: 1000,
+          show: false
+        },
+        yAxis: {
+          axisLine: {
+            show: false
+          },
+          axisLabel: {
+            fontSize: "10",
+            color: "#fff"
+          },
+          axisTick: {
+            show: true,
+            interval: 0
+          },
+          splitLine: {
+            show: false,
+            interval: 0
+          },
+          type: "category",
+          data: ["微信", "微博", "网页", "客户端", "报刊", "论坛"]
+        },
+        series: [
+          {
+            barWidth: 5,
+            stack: "总量",
+            type: "bar",
+            itemStyle: {
+              barBorderRadius: [10, 0, 0, 10]
+            },
+            data: [
+              {
+                value: 430,
+                itemStyle: {
+                  color: "rgb(118,207,252)",
+                  borderColor: "rgb(118,207,252)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 600,
+                itemStyle: {
+                  color: "rgb(254,208,144)",
+                  borderColor: "rgb(254,208,144)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 500,
+                itemStyle: {
+                  color: "rgb(123,231,95)",
+                  borderColor: "rgb(123,231,95)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 300,
+                itemStyle: {
+                  color: "rgb(226,118,253)",
+                  borderColor: "rgb(226,118,253)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 450,
+                itemStyle: {
+                  color: "rgb(247,176,126)",
+                  borderColor: "rgb(247,176,126)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 600,
+                itemStyle: {
+                  color: "rgb(153,139,250)",
+                  borderColor: "rgb(153,139,250)",
+                  borderWidth: 1
+                }
+              }
+            ]
+          },
+          {
+            tooltip: {
+              show: false
+            },
+            stack: "总量",
+            type: "bar",
+            itemStyle: {
+              barBorderRadius: [0, 10, 10, 0]
+            },
+            data: [
+              {
+                value: 570,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(118,207,252)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 400,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(254,208,144)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 500,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(123,231,95)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 700,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(226,118,253)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 550,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(247,176,126)",
+                  borderWidth: 1
+                }
+              },
+              {
+                value: 400,
+                itemStyle: {
+                  color: "rgb(23,44,63)",
+                  borderColor: "rgb(153,139,250)",
+                  borderWidth: 1
+                }
+              }
+            ]
+          }
+        ]
+      },
       abc: {
+        title: [
+          {
+            text: "男：535",
+            textStyle: { color: "#fff", fontSize: "10", fontWeight: "400" },
+            bottom: "5%",
+            left: "10%"
+          },
+          {
+            text: "女：510",
+            textStyle: { color: "#fff", fontSize: "10", fontWeight: "400" },
+            bottom: "5%",
+            left: "55%"
+          }
+        ],
         color: [
           "rgb(4,164,215)",
           "rgb(103,194,230)",
@@ -620,36 +1265,100 @@ export default {
         ],
         tooltip: {
           trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
+          formatter: "{a} <br/>{b} : {c}"
         },
         series: [
           {
+            name: "男性",
+            type: "pie",
+            radius: ["0", "40%"],
+            center: ["25%", "50%"],
+            data: [{ value: 55, name: "男性" }],
+            selectedMode: false,
+            itemStyle: {
+              color: "rgb(22,43,62)",
+              
+            },
+            label: {
+              position: "center",
+              formatter: "{c}%",
+              color: "#fff"
+            }
+          },
+          {
+            name: "女性",
+            type: "pie",
+            radius: ["0", "40%"],
+            center: ["70%", "50%"],
+            data: [{ value: 45, name: "女性" }],
+            selectedMode: false,
+            itemStyle: {
+              color: "rgb(22,43,62)"
+            },
+            label: {
+              position: "center",
+              formatter: "{c}%",
+              color: "#fff"
+            }
+          },
+          {
             name: "游客性别比例",
             type: "pie",
-            radius: "65%",
-            center: ["50%", "50%"],
+            radius: ["40%", "50%"],
+            center: ["25%", "50%"],
             selectedMode: "single",
             data: [
               {
                 value: 535,
                 name: "男",
                 label: {
-                  position: "inside",
+                  show: false,
+                  position: "outside",
                   formatter: "{b} : {c}人",
                   fontSize: 8
-                }
-              },
-              {
-                value: 510,
-                name: "女",
-                label: {
-                  position: "inside",
-                  formatter: "{b} : {c}人",
-                  fontSize: 8
+                },
+                labelLine: {
+                  show: false
                 }
               }
             ],
             itemStyle: {
+              color: "rgb(22,43,62)",
+              borderColor: "rgb(42,138,196)",
+              borderWidth:3,
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: "rgba(0, 0, 0, 0.5)",
+                opacity: 0.5
+              }
+            }
+          },
+          {
+            name: "游客性别比例",
+            type: "pie",
+            radius: ["40%", "50%"],
+            center: ["70%", "50%"],
+            selectedMode: "single",
+            data: [
+              {
+                value: 510,
+                name: "女",
+                label: {
+                  show: false,
+                  position: "outside",
+                  formatter: "{b} : {c}人",
+                  fontSize: 8
+                },
+                labelLine: {
+                  show: false
+                }
+              }
+            ],
+            itemStyle: {
+              color: "rgb(22,43,62)",
+              borderColor: "rgb(42,138,196)",
+              borderWidth:3,
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
@@ -746,34 +1455,40 @@ export default {
         ]
       },
       bbb: {
-        color: ["rgb(4,164,215)", "rgb(103,194,230)"],
+        color: [
+          "rgb(4,164,215)",
+          "rgb(223,180,89)",
+          "rgb(103,194,230)",
+          "rgb(124,105,223)"
+        ],
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+          data: ["20岁以下", "20-30岁", "40-60岁", "60岁以上"],
+          textStyle: {
+            color: "#fff",
+            fontSize: "8"
+          },
+          left: "2%",
+          top: "8%",
+          itemHeight: "5"
         },
         series: [
           {
             name: "游客年龄分析",
             type: "pie",
             radius: "65%",
-            center: ["50%", "50%"],
+            center: ["70%", "50%"],
             selectedMode: "single",
             data: [
               {
-                value: 35,
-                name: "15岁以下",
-                label: {
-                  position: "inside",
-                  formatter: "{b} : {c}人",
-                  fontSize: 8
-                }
-              },
-              {
                 value: 510,
-                name: "16-20岁",
+                name: "20岁以下",
                 label: {
                   position: "inside",
-                  formatter: "{b} : {c}人",
+                  formatter: "{c}人",
                   fontSize: 8
                 }
               },
@@ -782,7 +1497,7 @@ export default {
                 name: "20-30岁",
                 label: {
                   position: "inside",
-                  formatter: "{b} : {c}人",
+                  formatter: "{c}人",
                   fontSize: 8
                 }
               },
@@ -791,7 +1506,7 @@ export default {
                 name: "40-60岁",
                 label: {
                   position: "inside",
-                  formatter: "{b} : {c}人",
+                  formatter: "{c}人",
                   fontSize: 8
                 }
               },
@@ -800,7 +1515,7 @@ export default {
                 name: "60岁以上",
                 label: {
                   position: "inside",
-                  formatter: "{b} : {c}人",
+                  formatter: "{c}人",
                   fontSize: 8
                 }
               }
@@ -822,21 +1537,23 @@ export default {
             text: "日最大可承载量",
             textStyle: {
               color: "rgb(255,255,255)",
-              fontSize: "12",
-              align: "center"
+              fontSize: "10",
+              align: "center",
+              fontWeight:400
             },
             top: "bottom",
-            left: "10%"
+            left: "12%"
           },
           {
             text: "瞬时最大可承载量",
             textStyle: {
               color: "rgb(255,255,255)",
-              fontSize: "12",
-              align: "center"
+              fontSize: "10",
+              align: "center",
+              fontWeight:400
             },
             top: "bottom",
-            left: "60%"
+            left: "62%"
           }
         ],
         tooltip: {},
@@ -844,9 +1561,9 @@ export default {
         series: [
           {
             type: "pie",
-            radius: ["0%", "50%"],
+            radius: ["0%", "40%"],
             center: ["25%", "45%"],
-            data: [{ value: 600, name: "600" }],
+            data: [{ value: 2.5, name: "2.5" }],
             label: {
               normal: {
                 position: "center",
@@ -860,7 +1577,7 @@ export default {
           },
           {
             type: "pie",
-            radius: ["0%", "50%"],
+            radius: ["0%", "40%"],
             center: ["75%", "45%"],
             data: [{ value: 800, name: "800" }],
             label: {
@@ -876,7 +1593,7 @@ export default {
           },
           {
             type: "pie",
-            radius: ["50%", "70%"],
+            radius: ["40%", "70%"],
             center: ["25%", "45%"],
             data: [{ value: 150, name: "sdf" }, { value: 200, name: "sff" }],
             label: {
@@ -892,9 +1609,18 @@ export default {
           },
           {
             type: "pie",
-            radius: ["50%", "70%"],
+            radius: ["40%", "70%"],
             center: ["75%", "45%"],
-            data: [{ value: 150, name: "sdf" }, { value: 200, name: "sff" }],
+            data: [
+              {
+                value: 150,
+                name: "sdf",
+                itemStyle: {
+                  color: "rgb(251,176,58)"
+                }
+              },
+              { value: 200, name: "sff" }
+            ],
             label: {
               normal: {
                 show: false,
@@ -1057,9 +1783,9 @@ export default {
           formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         title: {
-          text: "团队总人数：95人\n今日在岗人数：85人\n今日休假人数：10人",
+          text: "团队总人数：95人\n\n今日在岗人数：85人\n\n今日休假人数：10人",
           right: "5%",
-          bottom: "50%",
+          bottom: "40%",
           textStyle: {
             lineHeight: "20",
             color: "#fff",
@@ -1277,6 +2003,7 @@ export default {
           }
         },
         yAxis: {
+          max: 2000,
           type: "value",
           axisLabel: {
             color: "rgb(255,255,255)"
@@ -1284,7 +2011,7 @@ export default {
         },
         series: [
           {
-            data: [20, 932, 901, 234, 1090, 340, 130],
+            data: [20, 932, 901, 234, 990, 340, 130],
             type: "line",
             label: { show: true },
             areaStyle: {
@@ -1300,12 +2027,12 @@ export default {
         ]
       },
       bar: {
-        tooltip:{},
+        tooltip: {},
         color: ["#08689D"],
         grid: {
           top: "10%",
           bottom: "25%",
-          left: "10%"
+          left: "15%"
         },
         xAxis: [
           {
@@ -1336,7 +2063,7 @@ export default {
           {
             name: "车位变化情况",
             type: "bar",
-            data: [320, 332, 301, 334, 390, 330, 320] 
+            data: [320, 332, 301, 334, 390, 330, 320]
           }
         ]
       },
@@ -1344,17 +2071,17 @@ export default {
       heatdata: [
         { lng: 119.833685, lat: 33.180778, count: 20 },
         { lng: 119.833685, lat: 33.180889, count: 90 },
-        {lng:119.833766,lat:33.18054,count:150},
-        {lng:119.833981,lat:33.180858,count:120},
-         {lng:119.833424,lat:33.180737,count:130},
-         {lng:119.83346,lat:33.180284,count:130},
+        { lng: 119.833766, lat: 33.18054, count: 150 },
+        { lng: 119.833981, lat: 33.180858, count: 120 },
+        { lng: 119.833424, lat: 33.180737, count: 130 },
+        { lng: 119.83346, lat: 33.180284, count: 130 },
 
-         { lng: 119.829813, lat: 33.182006, count: 120 },
+        { lng: 119.829813, lat: 33.182006, count: 120 },
         { lng: 119.830783, lat: 33.182021, count: 90 },
-        {lng:119.829885,lat:33.181689,count:190},
-        {lng:119.830154,lat:33.181432,count:140},
-         {lng:119.830226,lat:33.182474,count:130},
-         {lng:119.830837,lat:33.18193,count:135},
+        { lng: 119.829885, lat: 33.181689, count: 190 },
+        { lng: 119.830154, lat: 33.181432, count: 140 },
+        { lng: 119.830226, lat: 33.182474, count: 130 },
+        { lng: 119.830837, lat: 33.18193, count: 135 }
         // { lng: 119.836685, lat: 33.185778, count: 20 },
         // { lng: 119.833685, lat: 33.180778, count: 20 },
         // { lng: 119.830128, lat: 33.182682, count: 20 },
@@ -1372,7 +2099,7 @@ export default {
           name: "AS1084",
           position: { lng: 119.82993, lat: 33.182214 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1382,7 +2109,7 @@ export default {
           name: "AS1085",
           position: { lng: 119.833182, lat: 33.182742 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1392,7 +2119,7 @@ export default {
           name: "AS1086",
           position: { lng: 119.833936, lat: 33.181081 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1402,7 +2129,7 @@ export default {
           name: "AS1087",
           position: { lng: 119.833649, lat: 33.179963 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1412,7 +2139,7 @@ export default {
           name: "AS1088",
           position: { lng: 119.833559, lat: 33.179162 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1423,7 +2150,7 @@ export default {
           name: "AS2084",
           position: { lng: 119.832086, lat: 33.182168 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1433,7 +2160,7 @@ export default {
           name: "AS3085",
           position: { lng: 119.833954, lat: 33.182017 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1443,7 +2170,7 @@ export default {
           name: "AS4086",
           position: { lng: 119.835374, lat: 33.180476 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1453,7 +2180,7 @@ export default {
           name: "AS5087",
           position: { lng: 119.828744, lat: 33.18312 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1463,7 +2190,7 @@ export default {
           name: "AS6088",
           position: { lng: 119.831601, lat: 33.178844 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1473,7 +2200,7 @@ export default {
           name: "AS7084",
           position: { lng: 119.835284, lat: 33.178119 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1483,7 +2210,7 @@ export default {
           name: "AS8085",
           position: { lng: 119.831295, lat: 33.179766 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "可用",
@@ -1495,7 +2222,7 @@ export default {
           name: "吴宝松",
           position: { lng: 119.830235, lat: 33.182229 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1505,7 +2232,7 @@ export default {
           name: "张国平",
           position: { lng: 119.829085, lat: 33.179192 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1515,7 +2242,7 @@ export default {
           name: "邢光禹",
           position: { lng: 119.834565, lat: 33.181081 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1525,7 +2252,7 @@ export default {
           name: "梅家榜",
           position: { lng: 119.836649, lat: 33.180491 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1535,7 +2262,7 @@ export default {
           name: "王华林",
           position: { lng: 119.833846, lat: 33.179192 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1545,7 +2272,7 @@ export default {
           name: "杨兴玉",
           position: { lng: 119.832499, lat: 33.182924 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1555,7 +2282,7 @@ export default {
           name: "王大海",
           position: { lng: 119.833757, lat: 33.177273 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -1567,7 +2294,7 @@ export default {
           name: "AS2084",
           position: { lng: 119.828475, lat: 33.182214 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1582,7 +2309,7 @@ export default {
           name: "AS3085",
           position: { lng: 119.833954, lat: 33.182017 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1597,7 +2324,7 @@ export default {
           name: "AS4086",
           position: { lng: 119.835374, lat: 33.180476 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1612,7 +2339,7 @@ export default {
           name: "AS5087",
           position: { lng: 119.828744, lat: 33.18312 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1627,7 +2354,7 @@ export default {
           name: "AS6088",
           position: { lng: 119.831601, lat: 33.178844 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1642,7 +2369,7 @@ export default {
           name: "AS7084",
           position: { lng: 119.835284, lat: 33.178119 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -1657,7 +2384,7 @@ export default {
           name: "AS8085",
           position: { lng: 119.831295, lat: 33.179766 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",

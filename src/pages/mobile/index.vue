@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex-top bg">
      <div class="head ">
-       <h3>南京固城湖水慢城景区</h3>
+       <h3>盐都智慧旅游景区APP</h3>
        <p>智慧景区监控系统</p>
      </div>
      <div class='body'>
@@ -34,10 +34,10 @@
               <img src="../../statics/icons/7.png" alt="">
               <p>旅游大巴</p>
             </router-link>
-             <a href="http://wx.shuimancheng.cn/guchenghu_weixin/web/home.html" class="col-6 nav-icon-btn">
+             <router-link :to="{name:'microweb'}" class="col-6 nav-icon-btn">
               <img src="../../statics/icons/8.png" alt="">
               <p>微网站</p>
-            </a>
+             </router-link>
              <router-link :to="{name:'worker'}" class="col-12 nav-icon-btn">
               <img src="../../statics/icons/9.png" alt="">
               <p>值班人员</p>
@@ -80,8 +80,8 @@ export default {
   
 }
 .nav-icon-btn img{
-  width: 12vw;
-  height: 6.5vh;
+  width: 3rem;
+  height: 3rem;
 }
 .nav-icon-btn >p{
  margin: .3rem 0;

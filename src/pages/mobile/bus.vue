@@ -66,7 +66,7 @@ export default {
           {
             name: "使用情况",
             type: "pie",
-            radius: "60%",
+            radius: "50%",
             center: ["50%", "60%"],
             data: [
               {
@@ -80,7 +80,7 @@ export default {
                       align: "center",
                       baseline: "middle",
                       fontFamily: "微软雅黑",
-                      fontSize: 15,
+                      fontSize: 10,
                       fontWeight: "bolder"
                     }
                   }
@@ -97,7 +97,7 @@ export default {
                       align: "center",
                       baseline: "middle",
                       fontFamily: "微软雅黑",
-                      fontSize: 15,
+                      fontSize: 10,
                       fontWeight: "bolder"
                     }
                   }
@@ -114,7 +114,7 @@ export default {
                       align: "center",
                       baseline: "middle",
                       fontFamily: "微软雅黑",
-                      fontSize: 15,
+                      fontSize: 10,
                       fontWeight: "bolder"
                     }
                   }

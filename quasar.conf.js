@@ -22,7 +22,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath:'spa-mat',
+      publicPath:'/',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,

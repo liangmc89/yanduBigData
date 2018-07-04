@@ -3,7 +3,7 @@
     <q-layout-header>
       <header class="title">
     <span class="header-time">{{dataStr}}</span>
-    <span class="header-title">固城湖水慢城大数据运营中心</span>
+    <span class="header-title">盐都智慧旅游景区大数据运营中心</span>
     <span class="header-weather">天气:多云 温度:24.9℃ 风向:东南风 </span>
   </header>
     </q-layout-header>

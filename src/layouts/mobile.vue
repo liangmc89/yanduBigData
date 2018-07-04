@@ -1,5 +1,5 @@
 <template>
-  <q-layout> <!-- Be sure to play with the Layout demo on docs -->
+  <q-layout style="max-width:414px;max-height:812px;margin:0 auto;overflow:hidden;"> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
    
@@ -55,5 +55,8 @@ export default {
 @import "../css/mobile.css";
 .my-root {
   font-size: 62.75%;
+}
+.fixed-top{
+  position:absolute;
 }
 </style>

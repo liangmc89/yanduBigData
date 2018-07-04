@@ -44,7 +44,7 @@
       <div class="sec-title">
         <span class="sec-main-title">实时景区舒适度</span>        
       </div>
-      <div class="sec-content sec-chart">
+      <div class="sec-content sec-chart" style="margin-top:0">
         <IEcharts :option='comofort'/>
       </div>
     </section>
@@ -338,7 +338,7 @@ export default {
           show: false,
           top: "17%",
           bottom: "20%",
-          left: 130,
+          left: 100,
          
           
         },
@@ -372,7 +372,10 @@ export default {
             },
             axisLabel: {
               show: true,
-              interval:0
+              interval:0,
+              fontSize:10,
+              fontWeight:400,
+              color:'#787f85'
             },
             axisTick: {
               show: false
@@ -448,8 +451,8 @@ export default {
           {
             name: "车位使用占比",
             type: "pie",
-            center: ["20%", "55%"],
-            radius: ["30%", "40%"],
+            center: ["15%", "55%"],
+            radius: ["20%", "30%"],
             z: 100,
             labelLine: {
               length2: "10",
@@ -486,7 +489,7 @@ export default {
             labelLine: {
               normal: {
                 show: true,
-                length2: 80
+                length2: 60
               }
             },
             data: [{ value: 1548, name: "舒   适：20000人以下" }],
@@ -511,7 +514,7 @@ export default {
             labelLine: {
               normal: {
                 show: true,
-                length2: 115
+                length2: 95
               }
             },
             data: [{ value: 1548, name: "较舒适：50000人以下" }],
@@ -536,7 +539,7 @@ export default {
             labelLine: {
               normal: {
                 show: true,
-                length2: 115
+                length2: 95
               }
             },
             data: [{ value: 1548, name: "一   般：80000人以下" }],
@@ -562,7 +565,7 @@ export default {
             labelLine: {
               normal: {
                 show: true,
-                length2: 60
+                length2: 40
               }
             },
             data: [{ value: 1548, name: "较拥挤：100000人以下" }],
@@ -588,7 +591,7 @@ export default {
             labelLine: {
               normal: {
                 show: true,
-                length2: 55
+                length2: 40
               }
             },
             data: [{ value: 1548, name: "拥   挤：150000人以下" }],
