@@ -148,7 +148,7 @@
 .map .map-title .total {
     width: 12vw;
     position: relative;
-    padding-right: 1.5vw;
+    /*padding-right: 1.5vw;*/
 }
 
 .map .map-title .month {
@@ -169,7 +169,7 @@
 }
 
 .map .map-title .sides-num {
-   
+
     position: absolute;
     top: 5vh;
     left: 2vw;
@@ -314,7 +314,7 @@
 
 .right .num-view {
     width: 20vw;
-    height: 28.3vh;
+    height: 28.4vh;
     background: url(../statics/images/623fa3f5a82f2ffb2b61899d1e0d0b39.png) no-repeat 0 0/100% 100%;
     /* background-size: contain; */
     color: #fff;
@@ -326,15 +326,15 @@
     float: left;
     overflow: hidden;
 }
-.click-zone {
-    width: 1vw;
-    height: 1vw;
-    position: absolute;
-    top: .522vw;
-    left: .438vw;
-    cursor: pointer;
-    background: linear-gradient(-48.7deg,#fbb03b 40%,transparent 46%,transparent);
-}
+    .click-zone {
+      width: 1.2vw;
+      height: 2vw;
+      position: absolute;
+      top: .522vw;
+      left: 0.308vw;
+      cursor: pointer;
+      background: linear-gradient(-65.6deg,#fbb03b 40%,transparent 46%,transparent);
+    }
 
 .fixmt {
     margin-top: .3vh!important;
@@ -345,11 +345,11 @@
     height: 20vh;
     position: absolute;
     top: 5.3vh;
-    left: .8vw;
+    left: .6vw;
     color: #99e2ff;
-    font-weight: 700;
+    font-weight: 600;
     font-size: .5vw;
-    
+
 }
 /* ------------------------------- */
 
@@ -383,8 +383,8 @@
     display: flex;
     align-items: center;
     color: #fff;
-    font-weight: 700;
-    font-size: .4375vw;
+    font-weight: 400;
+    font-size: .5rem;
 }
 .num-view .two-block {
     flex: 1;
@@ -424,7 +424,7 @@
     display: block;
     flex: 1;
     font-size: .39583333vw;
-    width: 50%;
+    width: 70%;
     background-color: #00a1f1;
     margin-bottom: .9vh;
     margin-top: 1vh;
@@ -459,7 +459,7 @@
     position: relative;
 }
 #province-rank {
-    font-size: .375vw;
+    font-size: 3px;
     margin: 4% 2%;
     width: 96%;
 }
@@ -471,7 +471,7 @@ table {
 .num-view .three-block .no-more-bottom {
     color: #a0a0a0;
     background-color: #444546;
-    line-height: .9vw;
+    /*line-height: .9vw;*/
 }
 .num-view .rectangle-wrap {
     flex: 1;

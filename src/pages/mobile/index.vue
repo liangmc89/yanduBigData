@@ -5,7 +5,7 @@
        <p>智慧景区监控系统</p>
      </div>
      <div class='body'>
-        <div class="row">          
+        <div class="row">
             <router-link  :to="{name:'data'}" class="col-6 nav-icon-btn">
               <img src="../../statics/icons/1.png" alt="">
               <p>实时数据</p>
@@ -27,7 +27,7 @@
               <p>旅行社信息</p>
             </router-link>
              <router-link :to="{name:'guide'}" class="col-6 nav-icon-btn">
-              <img src="../../statics/icons/6.png" alt="">
+              <img style="height: 2.2rem;margin: .4rem" src="../../statics/icons/6.png" alt="">
               <p>导游信息</p>
             </router-link>
              <router-link :to="{name:'bus'}" class="col-6 nav-icon-btn">
@@ -42,7 +42,7 @@
               <img src="../../statics/icons/9.png" alt="">
               <p>值班人员</p>
             </router-link>
-          
+
         </div>
      </div>
   </q-page>
@@ -65,7 +65,7 @@ export default {
 };
 </script>
 <style scope lang='css'>
- @import '../../css/mobile.css'; 
+ @import '../../css/mobile.css';
 
 .nav-icon-btn:nth-child(2n){
   border-left: 1px solid rgb(236,236,236);
@@ -77,7 +77,7 @@ export default {
   text-decoration: none;
   color: black;
   border-bottom: 1px solid rgb(236,236,236);
-  
+
 }
 .nav-icon-btn img{
   width: 3rem;
@@ -86,7 +86,7 @@ export default {
 .nav-icon-btn >p{
  margin: .3rem 0;
  font-size: 1rem;
- 
+
 }
 
 .bg {
@@ -95,7 +95,7 @@ export default {
 }
 
 .head {
-  text-align: center;  
+  text-align: center;
   color: white;
 }
 .head > h3 {
@@ -110,7 +110,7 @@ export default {
   background:white;
   border-radius:1rem;
   overflow: hidden;
-  
+
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
  <q-page class="content-pages">
-    <q-layout view="hHr LpR lFf">  
+    <q-layout view="hHr LpR lFf">
   <q-layout-header style="box-shadow:none">
      <q-toolbar color="white" text-color="rgb(80,80,80)">
          <q-btn flat round dense icon="navigate_before" @click="$router.back()"/>
@@ -10,38 +10,38 @@
         <q-btn flat round dense  />
     </q-toolbar>
    <div class="padding-lr-1rem" style="background:white">
-    <section style="border-bottom:none">      
-          
-      
+    <section style="border-bottom:none">
+
+
     </section>
    </div>
   </q-layout-header>
-     
+
    <q-page-container>
    <q-page>
-  
+
     <div class="padding-1rem">
     <section>
       <div class="sec-title">
-        <span class="sec-main-title">实时大巴使用情况</span>        
+        <span class="sec-main-title">实时大巴使用情况</span>
       </div>
-      <div class="sec-content sec-chart">      
-         <IEcharts :option='bus'/>      
+      <div class="sec-content sec-chart" >
+         <IEcharts :option='bus'/>
       </div>
     </section>
     <section class="no-border-bttom">
       <div class="sec-title">
-        <span class="sec-main-title">近期大巴使用率（6月）</span>        
+        <span class="sec-main-title">近期大巴使用率（6月）</span>
       </div>
       <div class="sec-content sec-chart">
         <IEcharts :option='inNum'/>
       </div>
     </section>
     </div>
-      
+
     </q-page>
   </q-page-container>
-  
+
 </q-layout>
   </q-page>
 </template>
@@ -56,18 +56,18 @@ export default {
   data() {
     return {
       bus: {
-       
+
         color: ["rgb(251,176,58)", "rgb(51,188,255)", "rgb(174,232,255)"],
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },       
+        },
         series: [
           {
             name: "使用情况",
             type: "pie",
-            radius: "50%",
-            center: ["50%", "60%"],
+            radius: "55%",
+            center: ["50%", "50%"],
             data: [
               {
                 value: 335,
@@ -202,7 +202,7 @@ export default {
             type: "bar",
             data: [50, 42, 33, 45, 63, 12, 23, 24, 53, 66, 50, 62],
             barWidth:10
-            
+
           },
           {
             name: "百分比",

@@ -22,7 +22,7 @@ module.exports = function (ctx) {
     build: {
       scopeHoisting: true,
       vueRouterMode: 'history',
-      publicPath:'/',
+      publicPath:'/yandu',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,

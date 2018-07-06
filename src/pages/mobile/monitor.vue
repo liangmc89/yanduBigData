@@ -8,14 +8,14 @@
  <q-btn flat round dense icon="search"/>
 </q-toolbar>
     <div class="padding-lr-1rem">
-    <section style="border-bottom:none">      
+    <section style="border-bottom:none">
       <div >
        <baidu-map class="map" map-click id="mobilemap" :center="center" :zoom="zoom" @ready="handler">
            <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
           <my-overlay :marker="currentMarker" @ShowScreen="ShowScreen"  v-show="currentMarker!=null"></my-overlay>
-   
+
           <bm-marker autoPan :key=index @click="markerClick(marker)" v-for="(marker,index) in markers" :title="marker.name"  :position="marker.position" :icon="currentMarker==marker.name?{url:'../statics/images/icon-pinA.png',size: {width: 30, height: 35}}:marker.icon"  >
-         
+
            <!-- <bm-label :content="marker.name" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -35, height: 20}"/> -->
         </bm-marker>
        </baidu-map>
@@ -32,14 +32,14 @@ export default {
   data(){
     return{
       center: { lng: 0, lat: 0 },
-      zoom: 3,      
+      zoom: 3,
       markers: [
         //攝像頭
         {
           name: "AS2084",
           position: { lng: 119.828475, lat: 33.182214 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -54,7 +54,7 @@ export default {
           name: "AS3085",
           position: { lng: 119.833954, lat: 33.182017 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -69,7 +69,7 @@ export default {
           name: "AS4086",
           position: { lng: 119.835374, lat: 33.180476 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -84,7 +84,7 @@ export default {
           name: "AS5087",
           position: { lng: 119.828744, lat: 33.18312 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -99,7 +99,7 @@ export default {
           name: "AS6088",
           position: { lng: 119.831601, lat: 33.178844 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -114,7 +114,7 @@ export default {
           name: "AS7084",
           position: { lng: 119.835284, lat: 33.178119 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -129,7 +129,7 @@ export default {
           name: "AS8085",
           position: { lng: 119.831295, lat: 33.179766 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "工作中",
@@ -144,12 +144,12 @@ export default {
       currentMarker: null,
       // videojs options
 
-      
+
     }
   },
   components:{
    MyOverlay,
-   
+
   },methods:{
     handler({ BMap, map }) {
       console.log(BMap, map);
@@ -158,7 +158,7 @@ export default {
       this.zoom = 17;
     },
     markerClick: function(marker) {
-      
+
       this.currentMarker = marker;
     },
     ShowScreen(num) {
