@@ -313,8 +313,8 @@
 }
 
 .right .num-view {
-    width: 20vw;
-    height: 28.4vh;
+    width: 19.98vw;
+    height: 30vh;
     background: url(../statics/images/623fa3f5a82f2ffb2b61899d1e0d0b39.png) no-repeat 0 0/100% 100%;
     /* background-size: contain; */
     color: #fff;
@@ -345,7 +345,7 @@
     height: 20vh;
     position: absolute;
     top: 5.3vh;
-    left: .6vw;
+    left: .7vw;
     color: #99e2ff;
     font-weight: 600;
     font-size: .5vw;
@@ -433,7 +433,7 @@
 }
 
 .num-view .three-block .bottom {
-    line-height: 2.5vh;
+    line-height: 2.9vh;
     cursor: pointer;
 }
 
@@ -471,7 +471,7 @@ table {
 .num-view .three-block .no-more-bottom {
     color: #a0a0a0;
     background-color: #444546;
-    /*line-height: .9vw;*/
+    line-height: 2.9vh;
 }
 .num-view .rectangle-wrap {
     flex: 1;

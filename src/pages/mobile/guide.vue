@@ -1,6 +1,6 @@
 <template>
   <q-page class="content-pages">
-    <q-layout view="hHr LpR lFf">  
+    <q-layout view="hHr LpR lFf">
   <q-layout-header style="box-shadow:none">
      <q-toolbar color="white" text-color="rgb(80,80,80)">
          <q-btn flat round dense icon="navigate_before" @click="$router.back()"/>
@@ -9,15 +9,15 @@
   </q-toolbar-title>
         <q-btn flat round dense icon="search" />
     </q-toolbar>
-   
+
   </q-layout-header>
-     
+
    <q-page-container>
    <q-page>
     <div class="padding-1rem">
     <section>
       <div class="sec-title">
-        <span class="sec-main-title">导游人员构成</span>        
+        <span class="sec-main-title">导游人员构成</span>
       </div>
       <div class="sec-content sec-chart">
         <IEcharts :option='guide'/>
@@ -25,15 +25,15 @@
     </section>
     <section>
       <div class="sec-title">
-        <span class="sec-main-title">导游实时位置</span>        
+        <span class="sec-main-title">导游实时位置</span>
       </div>
       <div class="sec-content relative-position" style="height:280px">
         <baidu-map class="map" id="guidemap" :center="center" :zoom="zoom" @ready="handler">
            <bm-navigation anchor="BMAP_ANCHOR_TOP_LEFT"></bm-navigation>
           <my-overlay :marker="currentMarkerObj"    v-show="currentMarkerObj!=null"></my-overlay>
           <bm-marker autoPan :key=index @click="markerClick(marker)" v-for="(marker,index) in markers" :title="marker.name" :position="marker.position" :icon="currentMarkerObj==marker.name?{url:'../statics/images/icon-pinA.png',size: {width: 30, height: 35}}:marker.icon"  >
-         
-           
+
+
         </bm-marker>
        </baidu-map>
       </div>
@@ -41,7 +41,7 @@
     </div>
     </q-page>
   </q-page-container>
-  
+
 </q-layout>
   </q-page>
 </template>
@@ -64,7 +64,7 @@ export default {
           name: "吴宝松",
           position: { lng: 119.830235, lat: 33.182229 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -74,7 +74,7 @@ export default {
           name: "张国平",
           position: { lng: 119.829085, lat: 33.179192 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -84,7 +84,7 @@ export default {
           name: "邢光禹",
           position: { lng: 119.834565, lat: 33.181081 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -94,7 +94,7 @@ export default {
           name: "梅家榜",
           position: { lng: 119.836649, lat: 33.180491 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -104,7 +104,7 @@ export default {
           name: "王华林",
           position: { lng: 119.833846, lat: 33.179192 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -114,7 +114,7 @@ export default {
           name: "杨兴玉",
           position: { lng: 119.832499, lat: 33.182924 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
@@ -124,7 +124,7 @@ export default {
           name: "王大海",
           position: { lng: 119.833757, lat: 33.177273 },
           icon: {
-            url: "../statics/images/icon-pinB.png",
+            url: "statics/images/icon-pinB.png",
             size: { width: 30, height: 35 }
           },
           status: "在岗",
